@@ -88,11 +88,11 @@ export function Menu({ order, hide }) {
       <div className="menu">
         {orderedItems.map(({ icon: Icon, href, title, description }, index) => (
           <a key={index} className="menu-item" href={href}>
-            <div className="menu-item-left dn dtc-ns">
+            <div className="menu-item-left">
               <Icon className="menu-item-icon" />
             </div>
             <div className="menu-item-right">
-              <div className="menu-item-title">{title} ➜</div>
+              <div className="menu-item-title">{title} &rarr;</div>
               <div className="menu-item-description">{description}</div>
             </div>
           </a>
@@ -103,17 +103,6 @@ export function Menu({ order, hide }) {
 }
 
 const css = `
-/**
- * Tachyons one-liners
- */
-.dn {
-  display: none;
-}
-@media screen and (min-width: 30em) {
-  .dtc-ns {
-    display: table-cell;
-  }
-}
 /**
  * Menu.
  */
@@ -164,6 +153,7 @@ const css = `
 }
 
 .menu-item-left {
+  display: table-cell;
   width: 86px;
   vertical-align: middle;
 }
@@ -172,6 +162,17 @@ const css = `
   display: inline-block;
   width: 60px;
   height: 60px;
+}
+
+@media screen and (max-width: 30em) {
+  .menu-item-left {
+    width: 50px;
+  }
+
+  .menu-item-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .menu-item-right {
