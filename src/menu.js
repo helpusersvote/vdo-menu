@@ -4,7 +4,7 @@ import {
   BallotIcon,
   CheckIcon,
   ClockIcon,
-  GlobeIcon,
+  AirplaneIcon,
   QuestionIcon
 } from './icons'
 
@@ -22,7 +22,7 @@ const items = [
     href: 'https://www.vote.org/am-i-registered-to-vote/',
     title: 'Check your registration',
     description:
-      'Not sure if you’re registered to vote? We’ll help you check, and let you know if you can still register.'
+      'Not sure if you’re registered to vote? We’ll help you check and register if you can.'
   },
   {
     id: 'polls',
@@ -46,15 +46,15 @@ const items = [
     href: 'https://www.vote.org/election-reminders/',
     title: 'Get election reminders',
     description:
-      'We’ll remind you when aand what you need to vote, so that you never miss an election again.'
+      'We’ll remind you when and what you need to vote, so that you never miss an election again.'
   },
   {
     id: 'absentee',
-    icon: GlobeIcon,
+    icon: AirplaneIcon,
     href: 'https://www.vote.org/absentee-ballot/',
     title: 'Get your absentee ballot',
     description:
-      'Can’t vote in person on Election Day? Check if you can request an absentee ballot.'
+      'Can’t vote in person on Election Day? Request an absentee ballot.'
   }
 ].filter(item => {
   if (!item.href) {
@@ -102,6 +102,13 @@ export function Menu({ order, hide }) {
   )
 }
 
+const minify = str =>
+  unescape(
+    escape(str)
+      .replace(/\\n/g, '')
+      .replace(/\s{2,}/g, '')
+  )
+
 const css = `
 /**
  * Menu.
@@ -113,20 +120,21 @@ const css = `
 }
 
 .menu {
-  background: white;
   text-align: left;
-  box-shadow: rgba(67, 90, 111, 0.416) 0px 0px 1px, rgba(67, 90, 111, 0.3) 0px 2px 4px -2px;
-  border-radius: 4px;
   font-family: SF UI Display, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  overflow: hidden;
 }
 
 .menu-item,
 .menu-item:visited {
+  padding: 26px 30px;
+  margin-bottom: 12px;
+  background: white;
   color: #69778b;
   text-decoration: none;
-  padding: 26px 30px;
   user-select: none;
+  box-shadow: rgba(67, 90, 111, 0.416) 0px 0px 1px, rgba(67, 90, 111, 0.3) 0px 2px 4px -2px;
+  border-radius: 4px;
+  overflow: hidden;
   transition: background .2s ease-out;
 }
 
@@ -137,16 +145,17 @@ const css = `
 }
 
 .menu-item:hover {
-  background: rgba(167, 176, 189, .075);
+  background: #f9f9fa;
 }
 
 .menu-item:active {
-  background: rgba(167, 176, 189, .15);
+  background: #f2f3f5;
 }
 
+/*
 .menu-item + .menu-item {
   border-top: 1px solid rgba(67, 90, 111, 0.125);
-}
+} */
 
 .menu-item {
   display: block;
@@ -180,12 +189,28 @@ const css = `
 }
 
 .menu-item-title {
-  font-size: 16.5px;
+  display: inline-block;
+  margin-bottom: 4px;
+  padding: 2px 4px;
+  color: white;
+  font-size: 16px;
   font-weight: bold;
-  color: #1F75E7;
+  background: #1F75E7;
+  border-radius: 2px;
   text-transform: uppercase;
+}
+.menu-item-description {
+  font-size: 15px;
+}
+@media (max-width: 330px) {
+  .menu-item-title {
+    font-size: 12px;
+  }
+  .menu-item-description {
+    font-size: 12px;
+  }
 }`
-const styles = { __html: css }
+const styles = { __html: minify(css) }
 
 export function MenuStyles() {
   return <style dangerouslySetInnerHTML={styles} />
