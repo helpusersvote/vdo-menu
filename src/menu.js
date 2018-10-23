@@ -191,7 +191,7 @@ const css = `
 .menu-item-title {
   display: inline-block;
   margin-bottom: 4px;
-  padding: 2px 4px;
+  padding: 3px 6px;
   color: white;
   font-size: 16px;
   font-weight: bold;
