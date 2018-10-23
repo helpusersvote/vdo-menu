@@ -4,6 +4,7 @@ import {
   BallotIcon,
   CheckIcon,
   ClockIcon,
+  CalendarIcon,
   AirplaneIcon,
   QuestionIcon
 } from './icons'
@@ -27,10 +28,18 @@ const items = [
   {
     id: 'polls',
     icon: MapIcon,
-    href: 'https://vote.org/polling-place-locator',
+    href: 'https://www.vote.org/polling-place-locator/',
     title: 'Find your polling place',
     description:
       'We’ll look up where is your nearest polling place, so you know where to go on Election Day.'
+  },
+  {
+    id: 'early',
+    icon: CalendarIcon,
+    href: 'https://www.vote.org/early-voting-calendar/',
+    title: 'Vote early',
+    description:
+      'We’ll find where you can go vote early, so you can skip Election Day lines.'
   },
   {
     id: 'ballot',
